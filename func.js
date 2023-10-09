@@ -31,75 +31,80 @@
 // }
 // console.log(fn5(100,34))
 
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-    return this;
-  }
-}
-const person1 = new Person("Alex", 44);
-console.log(person1);
+// class Person {
+//   constructor(name, age, city) {
+//     this.name = name;
+//     this.age = age;
+//     this.city=city
+//     return this;
+//   }
+// }
+// const person1 = new Person("Alex", 44, Kyiv);
+// console.log(person1);
 
-class Car {
-  constructor(model, yea, color) {
-    this.model = model;
-    this.yea = yea;
-    this.color = color;
-  }
-  showInfo() {
-    return console.log(this);
-  }
+// class Car {
+//   constructor(model, yea, color) {
+//     this.model = model;
+//     this.yea = yea;
+//     this.color = color;
+//   }
+//   showInfo() {
+//     return console.log(this);
+//   }
 
-  newModel(model) {
-    return (this.model = model);
-  }
-}
-const car1 = new Car("jeep", 2018, "red");
-console.log(car1.showInfo());
-car1.newModel("BMV");
-car1.showInfo();
+//   newModel(model) {
+//     return (this.model = model);
+//   }
+// }
+// const car1 = new Car("jeep", 2018, "red");
+// console.log(car1.showInfo());
+// car1.newModel("BMV");
+// car1.showInfo();
 
-class Person2 {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-  changeName(name) {
-    return (this.name = name);
-  }
-  changeAge(age) {
-    return (this.age = newAge);
-  }
-}
-const person2 = new Person2("Alex", 44);
-console.log(person2);
+// class Person2 {
+//   constructor(name, age, city) {
+//     this.name = name;
+//     this.age = age;
+//     this.city=city;
+//   }
+//   changeName(name) {
+//     return (this.name = name);
+//   }
+//   changeAge(age) {
+//     return (this.age = newAge);
+//   }
+//   changeCity(city){
+//     return (this.city=newCity)
+//   }
+// }
+// const person2 = new Person2("Alex", 44);
+// console.log(person2);
 
-console.log(person2.changeName("Boris"));
+// console.log(person2.changeName("Boris"));
 
-class Room {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
+// class Room {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
 
-  info() {
-    console.log(this);
-  }
-}
+//   info() {
+//     console.log(this);
+//   }
+// }
 
-class Square extends Room {
-  constructor(height, width) {
-    super(height, width); // Передаем высоту и ширину в родительский конструктор
-    this.square = height * width; // Вычисляем площадь квадрата
-  }
-}
+// class Square extends Room {
+//   constructor(height, width) {
+//     super(height, width); // Передаем высоту и ширину в родительский конструктор
+//     this.square = height * width; // Вычисляем площадь квадрата
+//   }
+// }
 
-const room1 = new Room(12, 13);
-const square1 = new Square(12, 13); // Теперь передаем два аргумента
+// const room1 = new Room(12, 13);
+// const square1 = new Square(12, 13); // Теперь передаем два аргумента
 
-room1.info(); // Вывод информации о room1
-square1.info(); // Вывод информации о square1
+// room1.info(); // Вывод информации о room1
+// square1.info(); // Вывод информации о square1
 
 //   class MyObject extends Object{
 //     constructor(myObject){
@@ -155,24 +160,29 @@ square1.info(); // Вывод информации о square1
 
 const nameInput = document.querySelector("#name");
 const ageInput = document.querySelector("#age");
+const cityInput = document.querySelector("#city");
 const createButton = document.querySelector("#create");
 const userSection = document.querySelector("#users-section");
+const searchInput = document.querySelector("#search");
+const searchButton = document.querySelector("#search-button");
+const cancelSearchButton = document.querySelector("#cancel-search-button");
 
 let users = [];
 
 const deleteUser = (indexOfUser) => {
   users = users.filter((el, i) => i !== indexOfUser);
-  renderUsers();
+  renderUsers(users);
 };
 
-function renderUsers() {
+function renderUsers(usersToRender) {
   userSection.innerHTML = "";
 
-  const usersContent = users.map(
+  const usersContent = usersToRender.map(
     (user) => ` <div class='user-card'>
   
   <p> ${user.name}</p>
   <span>${user.age}</span>
+  <p>${user.city}</p>
   <button class='delete-user-button'>Delete</button>
   </div>`
   );
@@ -182,7 +192,7 @@ function renderUsers() {
   });
 
   const deleteButton = [...document.querySelectorAll(".delete-user-button")];
-  deleteButton.forEach((button,i) => {
+  deleteButton.forEach((button, i) => {
     button.onclick = () => deleteUser(i);
   });
 }
@@ -190,10 +200,22 @@ function renderUsers() {
 createButton.onclick = () => {
   const name = nameInput.value;
   const age = +ageInput.value;
+  const city = cityInput.value;
 
-  const user = { name, age };
+  const user = { name, age, city };
   users.push(user);
   nameInput.value = "";
   ageInput.value = "";
-  renderUsers();
+  cityInput.value = "";
+  renderUsers(users);
 };
+
+searchButton.onclick = () => {
+  const usersToRender=users.filter((user)=>user.name.includes(searchInput.value))
+  
+  renderUsers(usersToRender)
+};
+cancelSearchButton.onclick=()=>{
+  renderUsers(users)
+  searchInput.value=''
+}
