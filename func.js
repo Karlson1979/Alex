@@ -7,6 +7,7 @@ const createButton = document.querySelector("#create");
 const userSection = document.querySelector("#users-section");
 const searchInput = document.querySelector("#search");
 const sortingByNameCheckbox=document.querySelector('#sort-by-name')
+const sortingByAgeCheckbox=document.querySelector('#sort-by-age')
 
 
 
@@ -92,8 +93,14 @@ const sorting={
     const usersCopy=[...users]
     usersCopy.sort((user1,user2)=>user1.name.localeCompare(user2.name))
     renderUsers(usersCopy)
+  },
+  ages:()=>{
+    const usersCopy=[...users]
+    usersCopy.sort((user1,user2)=>user1.age-user2.age)
+    renderUsers(usersCopy)
   }
-}
+  }
+
 
 // searchButton.onclick = () => {
 //   const usersToRender=users.filter((user)=>user.name.includes(searchInput.value))
@@ -117,4 +124,12 @@ if (event.target.checked){
 } else{
   renderUsers(users)
 }
- } 
+
+sortingByAgeCheckbox.onchange=(event)=>{
+  if (event.target.checked){
+    sorting.ages()
+  
+  } else{
+    renderUsers(users)
+  }
+ } }
