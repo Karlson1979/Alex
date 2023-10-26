@@ -218,4 +218,4 @@ searchButton.onclick = () => {
 cancelSearchButton.onclick=()=>{
   renderUsers(users)
   searchInput.value=''
-}
+};
