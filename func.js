@@ -64,6 +64,10 @@ createButton.onclick = () => {
   const age = +ageInput.value;
   const city = cityInput.value;
 
+  if (name==''||age==''||city==''){
+   return  alert('fill in the details')
+  };
+
   if (changingUser){
 
 users[changingUser.index]={
@@ -75,6 +79,7 @@ users[changingUser.index]={
 changingUser=undefined;
 createButton.textContent='Create User'
   }
+
 
 else{
   const user = { name, age, city };
@@ -120,6 +125,7 @@ renderUsers(usersToRender)
  sortingByNameCheckbox.onchange=(event)=>{
 if (event.target.checked){
   sorting.names()
+  sortingByAgeCheckbox.checked=false
 
 } else{
   renderUsers(users)
@@ -128,6 +134,7 @@ if (event.target.checked){
 sortingByAgeCheckbox.onchange=(event)=>{
   if (event.target.checked){
     sorting.ages()
+    sortingByNameCheckbox.checked=false
   
   } else{
     renderUsers(users)
