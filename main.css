@@ -1,5 +1,14 @@
-.user-card{
-    border: 1px solid rgb(80, 3, 3);
- padding: 5px;
-    margin: 5px;
+body{
+    display: flex;
+}
+section{
+    display:inline-block;
+}
+main{
+    display: none;
+}
+.square{
+   margin: 10px;
+   color: white;
+   font-size: 30px;
 }
