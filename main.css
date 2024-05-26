@@ -15,8 +15,8 @@
 }
 
 .circle {
-    width: 150 px;
-    height: 150 px;
+    width: 150px;
+    height: 150px;
     background-color: yellow;
     border-radius: 50%;
     position: absolute;
