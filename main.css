@@ -1,22 +1,24 @@
-.square{
+.square {
     width: 200px;
     height: 200px;
     background-color: blue;
     display: flex;
     justify-content: center;
     align-items: center;
-position: absolute;
-
-
-
-
+    position: absolute;
 
 }
-.circle{
-    width: 150px;
-    height: 150px;
+
+.title {
+    color: blueviolet;
+   
+}
+
+.circle {
+    width: 150 px;
+    height: 150 px;
     background-color: yellow;
     border-radius: 50%;
-position: absolute;
+    position: absolute;
 
 }
