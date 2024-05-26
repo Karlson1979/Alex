@@ -1,5 +1,24 @@
-.user-card{
-    border: 1px solid rgb(80, 3, 3);
- padding: 5px;
-    margin: 5px;
+.square {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+}
+
+.title {
+    color: blueviolet;
+   
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+
 }
