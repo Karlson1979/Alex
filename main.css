@@ -1,14 +1,22 @@
-body{
-    display: flex;
-}
-section{
-    display:inline-block;
-}
-main{
-    display: none;
-}
 .square{
-   margin: 10px;
-   color: white;
-   font-size: 30px;
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+position: absolute;
+
+
+
+
+
+}
+.circle{
+    width: 150px;
+    height: 150px;
+    background-color: yellow;
+    border-radius: 50%;
+position: absolute;
+
 }
